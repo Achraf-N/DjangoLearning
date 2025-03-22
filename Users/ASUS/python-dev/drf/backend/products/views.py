@@ -12,7 +12,7 @@ class ProductDetailApiView(generics.RetrieveAPIView):
   queryset = Product.objects.all()
   serializer_class = ProducrSerializer
   authentication_classes = [authentication.SessionAuthentication]
-  permission_classes = [permissions.IsAuthenticated]
+  permission_classes = [permissions.DjangoModelPermissions]
 
 product_detail_view = ProductDetailApiView.as_view()
 
