@@ -5,14 +5,14 @@ from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from .models import Product
 from .serializers import ProducrSerializer
-
+from .permissions import IsStuffEditorPermission
 # Create your views here.
 
 class ProductDetailApiView(generics.RetrieveAPIView):
   queryset = Product.objects.all()
   serializer_class = ProducrSerializer
   authentication_classes = [authentication.SessionAuthentication]
-  permission_classes = [permissions.DjangoModelPermissions]
+  permission_classes = [IsStuffEditorPermission]
 
 product_detail_view = ProductDetailApiView.as_view()
 
